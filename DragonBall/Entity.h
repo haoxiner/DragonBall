@@ -1,6 +1,5 @@
 #pragma once
-#include "PositionComponent.h"
-#include "RenderComponent.h"
+#include <cassert>
 #include <map>
 
 class Entity

@@ -4,7 +4,7 @@
 Component::ComponentType RenderSystem::GetRelatedComponentType()
 {
   const Component::ComponentType relatedComponent =
-    Component::POSITION_COMPONENT &
+    Component::WORLD_POSITION_COMPONENT &
     Component::RENDER_COMPONENT;
   return relatedComponent;
 }

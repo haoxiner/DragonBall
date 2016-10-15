@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\Components">
+      <UniqueIdentifier>{5be99ec7-ec22-4fe9-9152-27d53bc1d409}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -51,7 +54,7 @@
     <ClCompile Include="RenderComponent.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="PositionComponent.cpp">
+    <ClCompile Include="WorldPositionComponent.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,9 +83,6 @@
     <ClInclude Include="Player.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="PositionComponent.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="RawModel.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -99,7 +99,10 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RenderComponent.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldPositionComponent.h">
+      <Filter>头文件\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -151,7 +151,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PositionComponent.cpp" />
+    <ClCompile Include="WorldPositionComponent.cpp" />
     <ClCompile Include="RawModel.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
@@ -168,7 +168,7 @@
     <ClInclude Include="Loader.h" />
     <ClInclude Include="OpenGLHeader.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PositionComponent.h" />
+    <ClInclude Include="WorldPositionComponent.h" />
     <ClInclude Include="RawModel.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderSystem.h" />

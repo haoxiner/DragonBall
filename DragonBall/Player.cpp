@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-  positionComponent_ = GetComponent<PositionComponent>();
+  positionComponent_ = GetComponent<WorldPositionComponent>();
   moveComponent_ = GetComponent<MoveComponent>();
   modelComponent_ = GetComponent<ModelComponent>();
 }

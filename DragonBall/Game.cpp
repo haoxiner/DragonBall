@@ -56,7 +56,6 @@ int WINAPI wWinMain(
     Loader loader;
     (loader.LoadToVAO(vertices, normals, texCoords, indices));
   }
-  PositionComponent positionComponent;
 
 
   Engine engine;

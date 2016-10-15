@@ -2,7 +2,7 @@
 #include "Component.h"
 #include <glm/glm.hpp>
 
-class PositionComponent : public Component
+class WorldPositionComponent : public Component
 {
 public:
   const static ComponentType COMPONENT_TYPE;

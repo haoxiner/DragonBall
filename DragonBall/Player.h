@@ -9,5 +9,5 @@ public:
   Player();
   virtual void Update(float deltaTime);
 private:
-  PositionComponent *positionComponent_;
+  WorldPositionComponent *positionComponent_;
 };
