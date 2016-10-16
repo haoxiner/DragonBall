@@ -5,12 +5,15 @@
 #include "RawModel.h"
 #include "Loader.h"
 
-#include "RenderSystem.h"
-
+#include "RenderingSystem.h"
+#include "RenderComponent.h"
+#include "Camera.h"
+#include "Log.h"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+#include <sstream>
 int WINAPI wWinMain(
   HINSTANCE hInstance,
   HINSTANCE hPrevInstance,
@@ -23,10 +26,10 @@ int WINAPI wWinMain(
     return -1;
   }
   
+  RawModel *rawModel = nullptr;
   
   Assimp::Importer importer;
-  const aiScene *scene = importer.ReadFile("D:/GameDev/Resources/Akai_E_Espiritu.fbx", aiProcessPreset_TargetRealtime_Fast);
-  
+  const aiScene *scene = importer.ReadFile("D:/GameDev/Resources/teapot.obj", aiProcessPreset_TargetRealtime_Fast);
   for (int meshIndex = 0; meshIndex < scene->mNumMeshes; meshIndex++)
   {
     aiMesh *mesh = scene->mMeshes[meshIndex];
@@ -54,19 +57,38 @@ int WINAPI wWinMain(
       indices.push_back(mesh->mFaces[i].mIndices[2]);
     }
     Loader loader;
-    (loader.LoadToVAO(vertices, normals, texCoords, indices));
+    rawModel = (loader.LoadToVAO(vertices, normals, texCoords, indices));
   }
 
-
-  Engine engine;
   Player player;
+  RenderComponent renderComp;
+  renderComp.rawModel_ = rawModel;
+  player.AddComponent(&renderComp);
+  WorldPositionComponent worldPositionComp;
+  player.AddComponent(&worldPositionComp);
+  Camera camera;
+  camera.position_ = glm::vec3(0.0f, 1.0f, 3.9f);
+
+  RenderingSystem renderingSystem;
+  renderingSystem.SetCamera(&camera);
+
+  // before adding to engine, entity should contain all components it needs.
+  Engine engine;
   engine.AddEntity(&player);
+  engine.AddSystem(&renderingSystem);
   
+  // this loop should start just after display.initialize()
+  // then another thread starts to load resources.
   while (display.IsRunning())
   {
     float deltaTime = display.GetDelta();
     engine.Update(deltaTime);
     display.Update();
+  }
+
+  if (rawModel)
+  {
+    delete rawModel;
   }
   return 0;
 }

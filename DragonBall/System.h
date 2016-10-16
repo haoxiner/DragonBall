@@ -6,9 +6,9 @@
 class System
 {
 public:
-  void Update(float deltaTime, std::vector<Entity*> entities);
+  virtual void Update(float deltaTime, std::vector<Entity*> &entities) = 0;
 protected:
   virtual Component::ComponentType GetRelatedComponentType() = 0;
-  virtual void Update(float deltaTime, Entity* entity) = 0;
+  bool Match(Entity *entity);
 private:
 };

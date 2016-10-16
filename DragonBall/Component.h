@@ -11,7 +11,7 @@ public:
   static const ComponentType RENDER_COMPONENT = 2;
   static bool Match(ComponentType key, ComponentType lock)
   {
-    return key == (key & lock);
+    return lock == (key & lock);
   }
   static ComponentType Merge(ComponentType keyA, ComponentType keyB)
   {

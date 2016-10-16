@@ -16,6 +16,21 @@
     <Filter Include="头文件\Components">
       <UniqueIdentifier>{5be99ec7-ec22-4fe9-9152-27d53bc1d409}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Systems">
+      <UniqueIdentifier>{fbe5797b-41a0-47b8-a418-510048c41864}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Components">
+      <UniqueIdentifier>{5c356abf-9a9c-4b32-a824-6f4e89c04822}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Systems">
+      <UniqueIdentifier>{fa932276-016d-4dd0-acb5-8ee9bc946618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Engine">
+      <UniqueIdentifier>{a98563b0-1d6e-4c45-a4c1-83597e2cc46e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Engine">
+      <UniqueIdentifier>{4d2e9e87-d151-49d9-9b48-0b349cc67f9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -39,9 +54,6 @@
     <ClCompile Include="RawModel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RenderSystem.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -52,9 +64,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RenderComponent.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Components</Filter>
     </ClCompile>
     <ClCompile Include="WorldPositionComponent.cpp">
+      <Filter>源文件\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderingSystem.cpp">
+      <Filter>源文件\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,16 +104,10 @@
     <ClInclude Include="RawModel.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="StaticShader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="System.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RenderComponent.h">
@@ -103,6 +115,15 @@
     </ClInclude>
     <ClInclude Include="WorldPositionComponent.h">
       <Filter>头文件\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>头文件\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderingSystem.h">
+      <Filter>头文件\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>头文件\Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

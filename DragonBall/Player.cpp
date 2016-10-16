@@ -1,13 +1,13 @@
 #include "Player.h"
+#include "Log.h"
 
-Player::Player()
+void Player::Initialize()
 {
   positionComponent_ = GetComponent<WorldPositionComponent>();
-  moveComponent_ = GetComponent<MoveComponent>();
-  modelComponent_ = GetComponent<ModelComponent>();
+  renderComponent_ = GetComponent<RenderComponent>();
 }
 
 void Player::Update(float deltaTime)
 {
-  moveComponent_->velocity_ = glm::vec3(0.0f, 0.0f, -1.0f);
+  positionComponent_->position_.z -= 0.1f * (0.001f * deltaTime);
 }
