@@ -9,6 +9,7 @@ class RenderingSystem : public System
 public:
   RenderingSystem();
   ~RenderingSystem();
+  virtual void ProcessEntity(Entity *entity);
   virtual void Update(float deltaTime, std::vector<Entity*> &entities);
   void SetCamera(Camera *camera);
 protected:

@@ -7,7 +7,7 @@ class Engine
 {
 public:
   void Update(float deltaTime);
-  void AddEntity(Entity *entity);
+  void ProcessEntity(Entity *entity);
   void AddSystem(System *system) { systems_.push_back(system); }
   void Remove(Entity *entity);
 private:

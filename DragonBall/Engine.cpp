@@ -9,7 +9,7 @@ void Engine::Update(float deltaTime)
   }
 }
 
-void Engine::AddEntity(Entity * entity)
+void Engine::ProcessEntity(Entity * entity)
 {
   entity->Initialize();
   entities_.push_back(entity);

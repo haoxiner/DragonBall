@@ -6,6 +6,7 @@
 class System
 {
 public:
+  virtual void ProcessEntity(Entity *entity) = 0;
   virtual void Update(float deltaTime, std::vector<Entity*> &entities) = 0;
 protected:
   virtual Component::ComponentType GetRelatedComponentType() = 0;

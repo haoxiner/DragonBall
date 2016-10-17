@@ -1,4 +1,5 @@
 #include "Display.h"
+#include <sstream>
 
 Display::Display()
   :window_(nullptr), running_(false), lastTick_(0)
@@ -54,12 +55,25 @@ bool Display::Initialize()
 
 void Display::Update()
 {
+  static float elapsedSeconds = 0.0f;
+  static int frameCount = 0;
   unsigned long tick = GetTickCount();
   if (tick < lastTick_)
   {
     tick = lastTick_;
   }
-  delta_ = static_cast<float>(tick - lastTick_);
+  delta_ = 0.001f * static_cast<float>(tick - lastTick_);
+  elapsedSeconds += delta_;
+  frameCount++;
+  if (elapsedSeconds >= 1.0f)
+  {
+    std::ostringstream oss;
+    oss << frameCount / elapsedSeconds;
+    glfwSetWindowTitle(window_, oss.str().c_str());
+    frameCount = 0;
+    elapsedSeconds = 0.0f;
+  }
+  
   lastTick_ = tick;
   glfwSwapBuffers(window_);
   glfwPollEvents();

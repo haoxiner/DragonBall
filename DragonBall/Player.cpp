@@ -9,5 +9,5 @@ void Player::Initialize()
 
 void Player::Update(float deltaTime)
 {
-  positionComponent_->position_.z -= 0.1f * (0.001f * deltaTime);
+  positionComponent_->position_.y += glm::radians(30.0f) * deltaTime;
 }

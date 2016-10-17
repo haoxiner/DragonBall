@@ -27,7 +27,7 @@ int WINAPI wWinMain(
   }
   
   RawModel *rawModel = nullptr;
-  
+  Loader loader;
   Assimp::Importer importer;
   const aiScene *scene = importer.ReadFile("D:/GameDev/Resources/teapot.obj", aiProcessPreset_TargetRealtime_Fast);
   for (int meshIndex = 0; meshIndex < scene->mNumMeshes; meshIndex++)
@@ -56,7 +56,6 @@ int WINAPI wWinMain(
       indices.push_back(mesh->mFaces[i].mIndices[1]);
       indices.push_back(mesh->mFaces[i].mIndices[2]);
     }
-    Loader loader;
     rawModel = (loader.LoadToVAO(vertices, normals, texCoords, indices));
   }
 
@@ -74,11 +73,13 @@ int WINAPI wWinMain(
 
   // before adding to engine, entity should contain all components it needs.
   Engine engine;
-  engine.AddEntity(&player);
+  engine.ProcessEntity(&player);
   engine.AddSystem(&renderingSystem);
   
   // this loop should start just after display.initialize()
   // then another thread starts to load resources.
+  display.Update();
+  display.Update();
   while (display.IsRunning())
   {
     float deltaTime = display.GetDelta();
