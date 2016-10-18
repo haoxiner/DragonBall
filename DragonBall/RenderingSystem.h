@@ -3,6 +3,7 @@
 #include "Component.h"
 #include "Camera.h"
 #include "StaticShader.h"
+#include "RenderingComponent.h"
 
 class RenderingSystem : public System
 {

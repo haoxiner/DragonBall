@@ -1,7 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "WorldPositionComponent.h"
-#include "RenderComponent.h"
+#include "RenderingComponent.h"
 
 class Player : public Entity
 {
@@ -10,5 +10,5 @@ public:
   virtual void Update(float deltaTime);
 private:
   WorldPositionComponent *positionComponent_;
-  RenderComponent *renderComponent_;
+  RenderingComponent *renderComponent_;
 };

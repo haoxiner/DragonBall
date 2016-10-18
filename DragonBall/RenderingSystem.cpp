@@ -1,7 +1,8 @@
 #include "RenderingSystem.h"
-#include "RenderComponent.h"
+#include "RenderingComponent.h"
 #include "WorldPositionComponent.h"
 #include "OpenGLHeader.h"
+#include "ComponentManager.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 Component::ComponentType RenderingSystem::GetRelatedComponentType()
@@ -38,6 +39,28 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
 {
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  for (auto renderingComponent : componentManager_->GetRenderingComponents())
+  {
+    auto worldPositionComp = renderingComponent.entity_->GetComponent<WorldPositionComponent>();
+    staticShader_->Use();
+    staticShader_->LoadViewMatrix(*camera_);
+    glm::mat4 modelMatrix;
+    modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
+    //modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
+    modelMatrix = glm::rotate(modelMatrix, worldPositionComp->position_.y, glm::vec3(0.0f, 0.0f, 1.0f));
+    staticShader_->LoadModelMatrix(modelMatrix);
+    glBindVertexArray(renderingComponent.rawModel_->vaoID_);
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
+    glDrawElements(GL_TRIANGLES, renderingComponent.rawModel_->indicesCount_, GL_UNSIGNED_INT, (void*)0);
+    glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
+    glBindVertexArray(0);
+    staticShader_->Release();
+  }
+  /*
   // traverse entities multiple times to use diffrent types of shaders to render
   for (auto entity : entities)
   {
@@ -46,33 +69,16 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
       entity->Update(deltaTime);
       // dispatch renderComponent to different renderer
       // we should design a method to re-dispatch only when entities changed.
-      /* Temporary method:
-      * In a specific renderer, renderComponents are in one array
-      * if (renderComponent->entity_ == nullptr)
-      *   remove from related renderer
-      * 
-      */
-      auto renderComp = entity->GetComponent<RenderComponent>();
-      auto worldPositionComp = entity->GetComponent<WorldPositionComponent>();
-      staticShader_->Use();
-      staticShader_->LoadViewMatrix(*camera_);
-      glm::mat4 modelMatrix;
-      modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
-      //modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
-      modelMatrix = glm::rotate(modelMatrix, worldPositionComp->position_.y, glm::vec3(0.0f, 0.0f, 1.0f));
-      staticShader_->LoadModelMatrix(modelMatrix);
-      glBindVertexArray(renderComp->rawModel_->vaoID_);
-      glEnableVertexAttribArray(0);
-      glEnableVertexAttribArray(1);
-      glEnableVertexAttribArray(2);
-      glDrawElements(GL_TRIANGLES, renderComp->rawModel_->indicesCount_, GL_UNSIGNED_INT, (void*)0);
-      glDisableVertexAttribArray(0);
-      glDisableVertexAttribArray(1);
-      glDisableVertexAttribArray(2);
-      glBindVertexArray(0);
-      staticShader_->Release();
+       //Temporary method:
+      //In a specific renderer, renderComponents are in one array
+      //if (renderComponent->entity_ == nullptr)
+       // remove from related renderer
+      
+      
+      
     }
   }
+  */
 }
 
 void RenderingSystem::SetCamera(Camera *camera)

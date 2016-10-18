@@ -60,9 +60,6 @@
     <ClCompile Include="System.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RenderComponent.cpp">
-      <Filter>源文件\Components</Filter>
-    </ClCompile>
     <ClCompile Include="WorldPositionComponent.cpp">
       <Filter>源文件\Components</Filter>
     </ClCompile>
@@ -75,12 +72,15 @@
     <ClCompile Include="Engine.cpp">
       <Filter>源文件\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="RenderingComponent.cpp">
+      <Filter>源文件\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Display.h">
@@ -110,9 +110,6 @@
     <ClInclude Include="StaticShader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RenderComponent.h">
-      <Filter>头文件\Components</Filter>
-    </ClInclude>
     <ClInclude Include="WorldPositionComponent.h">
       <Filter>头文件\Components</Filter>
     </ClInclude>
@@ -124,6 +121,15 @@
     </ClInclude>
     <ClInclude Include="Log.h">
       <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderingComponent.h">
+      <Filter>头文件\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>头文件\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentManager.h">
+      <Filter>头文件\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

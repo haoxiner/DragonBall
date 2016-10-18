@@ -4,7 +4,7 @@
 void Player::Initialize()
 {
   positionComponent_ = GetComponent<WorldPositionComponent>();
-  renderComponent_ = GetComponent<RenderComponent>();
+  renderComponent_ = GetComponent<RenderingComponent>();
 }
 
 void Player::Update(float deltaTime)

@@ -19,7 +19,10 @@ public:
   }
   virtual ComponentType GetComponentType() = 0;
   Entity *entity_;
+  int GetID() { return id_; }
+  void SetID(int id) { id_ = id; }
 protected:
   Component() {}
 private:
+  int id_;
 };

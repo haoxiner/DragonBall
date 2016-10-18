@@ -6,9 +6,11 @@
 #include "Loader.h"
 
 #include "RenderingSystem.h"
-#include "RenderComponent.h"
+#include "RenderingComponent.h"
 #include "Camera.h"
 #include "Log.h"
+#include "ComponentManager.h"
+
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
@@ -59,12 +61,16 @@ int WINAPI wWinMain(
     rawModel = (loader.LoadToVAO(vertices, normals, texCoords, indices));
   }
 
+  ComponentManager componentManager;
+  System::SetComponentManager(&componentManager);
+
   Player player;
-  RenderComponent renderComp;
-  renderComp.rawModel_ = rawModel;
-  player.AddComponent(&renderComp);
-  WorldPositionComponent worldPositionComp;
-  player.AddComponent(&worldPositionComp);
+  auto renderComp = componentManager.CreateComponent<RenderingComponent>();
+  renderComp->rawModel_ = rawModel;
+  player.AddComponent(renderComp);
+
+  auto worldPositionComp = componentManager.CreateComponent<WorldPositionComponent>();
+  player.AddComponent(worldPositionComp);
   Camera camera;
   camera.position_ = glm::vec3(0.0f, 1.0f, 3.9f);
 
