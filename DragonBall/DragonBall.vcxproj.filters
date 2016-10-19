@@ -31,6 +31,18 @@
     <Filter Include="源文件\Engine">
       <UniqueIdentifier>{4d2e9e87-d151-49d9-9b48-0b349cc67f9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Renderers">
+      <UniqueIdentifier>{041ea5d1-d16e-4d33-a111-eefb7351b522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Utils">
+      <UniqueIdentifier>{c65bd595-9ebf-4017-8167-10aee04e43c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Entities">
+      <UniqueIdentifier>{e2c47c2c-e37c-455b-a3d2-47363e82b780}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Entities">
+      <UniqueIdentifier>{0ceff12d-8a7f-4d77-bd4b-55a32bdcbeb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -45,9 +57,6 @@
     <ClCompile Include="Loader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="RawModel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -57,17 +66,11 @@
     <ClCompile Include="StaticShader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="System.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="WorldPositionComponent.cpp">
       <Filter>源文件\Components</Filter>
     </ClCompile>
     <ClCompile Include="RenderingSystem.cpp">
       <Filter>源文件\Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>源文件\Engine</Filter>
@@ -77,6 +80,24 @@
     </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>源文件\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshLoader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>源文件\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainComponent.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,9 +111,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLHeader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RawModel.h">
@@ -128,11 +146,26 @@
     <ClInclude Include="Engine.h">
       <Filter>头文件\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>头文件\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainRenderer.h">
+      <Filter>头文件\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshLoader.h">
+      <Filter>头文件\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainComponent.h">
+      <Filter>头文件\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>头文件\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>头文件\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

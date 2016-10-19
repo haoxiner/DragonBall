@@ -6,9 +6,8 @@
 class RenderingComponent : public Component
 {
 public:
-  RenderingComponent() {}
+  RenderingComponent(const int id, const RawModel &rawModel);
   const static ComponentType COMPONENT_TYPE;
-  virtual ComponentType GetComponentType();
-  RawModel *rawModel_;
+  RawModel rawModel_;
 private:
 };

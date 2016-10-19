@@ -5,13 +5,6 @@
 #include "ComponentManager.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-Component::ComponentType RenderingSystem::GetRelatedComponentType()
-{
-  const Component::ComponentType relatedComponent =
-    Component::Merge(Component::WORLD_POSITION_COMPONENT, Component::RENDER_COMPONENT);
-  return relatedComponent;
-}
-
 RenderingSystem::RenderingSystem()
 {
   glEnable(GL_DEPTH_TEST);
@@ -49,11 +42,11 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
     modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
     //modelMatrix = glm::rotate(modelMatrix, worldPositionComp->position_.y, glm::vec3(0.0f, 0.0f, 1.0f));
     staticShader_->LoadModelMatrix(modelMatrix);
-    glBindVertexArray(renderingComponent.rawModel_->vaoID_);
+    glBindVertexArray(renderingComponent.rawModel_.vaoID_);
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
     glEnableVertexAttribArray(2);
-    glDrawElements(GL_TRIANGLES, renderingComponent.rawModel_->indicesCount_, GL_UNSIGNED_INT, (void*)0);
+    glDrawElements(GL_TRIANGLES, renderingComponent.rawModel_.indicesCount_, GL_UNSIGNED_INT, (void*)0);
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);

@@ -49,7 +49,7 @@ GLuint Shader::LoadShader(const std::string &shaderSource, const GLenum type)
   const char * const source = shaderSource.c_str();
   glShaderSource(shaderID, 1, &source, nullptr);
   glCompileShader(shaderID);
-  std::ofstream file("D://log.txt");
+  std::ofstream file("D:/shaderError.log");
   char buffer[1024];
   memset(buffer, 0, sizeof(buffer));
   glGetShaderInfoLog(shaderID, sizeof(buffer), nullptr, buffer);

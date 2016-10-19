@@ -3,9 +3,9 @@
 class RawModel
 {
 public:
-  RawModel(GLuint vaoID, int indicesCount);
+  RawModel();
+  RawModel(const GLuint vaoID, const int indicesCount);
   ~RawModel();
-  const GLuint vaoID_;
-  const unsigned indicesCount_;
+  GLuint vaoID_;
+  unsigned indicesCount_;
 };
-

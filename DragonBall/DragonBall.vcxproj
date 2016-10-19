@@ -146,13 +146,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="MeshLoader.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="TerrainComponent.cpp" />
     <ClCompile Include="WorldPositionComponent.cpp" />
     <ClCompile Include="RawModel.cpp" />
     <ClCompile Include="RenderingComponent.cpp" />
@@ -171,8 +174,12 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Log.h" />
+    <ClInclude Include="MeshLoader.h" />
     <ClInclude Include="OpenGLHeader.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Terrain.h" />
+    <ClInclude Include="TerrainComponent.h" />
+    <ClInclude Include="TerrainRenderer.h" />
     <ClInclude Include="WorldPositionComponent.h" />
     <ClInclude Include="RawModel.h" />
     <ClInclude Include="RenderingComponent.h" />

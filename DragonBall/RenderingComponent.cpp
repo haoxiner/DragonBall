@@ -2,7 +2,7 @@
 
 const Component::ComponentType RenderingComponent::COMPONENT_TYPE = RENDER_COMPONENT;
 
-Component::ComponentType RenderingComponent::GetComponentType()
+RenderingComponent::RenderingComponent(const int id, const RawModel &rawModel)
+  :Component(id), rawModel_(rawModel)
 {
-  return COMPONENT_TYPE;
 }

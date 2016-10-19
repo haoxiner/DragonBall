@@ -117,20 +117,3 @@ void Display::Destroy()
   window_ = nullptr;
   running_ = false;
 }
-
-void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-  /*  The action is one of GLFW_PRESS, GLFW_REPEAT or GLFW_RELEASE.
-   *  The key will be GLFW_KEY_UNKNOWN if GLFW lacks a key token for it,
-   *  for example E-mail and Play keys.
-   */
-  if (action == GLFW_PRESS)
-  {
-    switch (key)
-    {
-    case GLFW_KEY_Q:
-    default:
-      break;
-    }
-  }
-}

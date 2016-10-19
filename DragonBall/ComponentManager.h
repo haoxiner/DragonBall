@@ -1,6 +1,7 @@
 #pragma once
 #include "RenderingComponent.h"
 #include "WorldPositionComponent.h"
+#include "TerrainComponent.h"
 #include <vector>
 
 class ComponentManager
@@ -8,24 +9,27 @@ class ComponentManager
 public:
   inline std::vector<RenderingComponent> &GetRenderingComponents() { return renderingComponents_; }
   inline std::vector<WorldPositionComponent> &GetWorldPositionComponents() { return worldPositionComponents_; }
-  template<class T> T *CreateComponent() { return nullptr; }
-  template<> RenderingComponent *CreateComponent()
+
+  RenderingComponent *CreateRenderingComponent(const RawModel &rawModel)
   {
-    RenderingComponent renderingComponent;
     int id = renderingComponents_.size();
-    renderingComponent.SetID(id);
-    renderingComponents_.push_back(renderingComponent);
+    renderingComponents_.push_back(RenderingComponent(id, rawModel));
     return &renderingComponents_.back();
   }
-  template<> WorldPositionComponent *CreateComponent()
+  WorldPositionComponent *CreateWorldPositionComponent()
   {
-    WorldPositionComponent worldPositionComponent;
     int id = renderingComponents_.size();
-    worldPositionComponent.SetID(id);
-    worldPositionComponents_.push_back(worldPositionComponent);
+    worldPositionComponents_.push_back(WorldPositionComponent(id));
     return &worldPositionComponents_.back();
+  }
+  TerrainComponent *CreateTerrainComponent()
+  {
+    int id = terrainComponents_.size();
+    terrainComponents_.push_back(TerrainComponent(id));
+    return &terrainComponents_.back();
   }
 private:
   std::vector<RenderingComponent> renderingComponents_;
   std::vector<WorldPositionComponent> worldPositionComponents_;
+  std::vector<TerrainComponent> terrainComponents_;
 };

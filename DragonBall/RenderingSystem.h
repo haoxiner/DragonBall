@@ -13,8 +13,6 @@ public:
   virtual void ProcessEntity(Entity *entity);
   virtual void Update(float deltaTime, std::vector<Entity*> &entities);
   void SetCamera(Camera *camera);
-protected:
-  virtual Component::ComponentType GetRelatedComponentType();
 private:
   Camera *camera_;
   StaticShader *staticShader_;

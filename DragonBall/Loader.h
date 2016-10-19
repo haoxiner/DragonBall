@@ -7,12 +7,13 @@ class Loader
 public:
   Loader();
   ~Loader();
-  RawModel* LoadToVAO(
+  void Clear();
+  RawModel LoadToVAO(
     const std::vector<float> &vertices,
     const std::vector<float> &normals,
     const std::vector<float> &texCoords,
     const std::vector<int> &indices);
-  RawModel* LoadToVAO(
+  RawModel LoadToVAO(
     const std::vector<float> &vertices,
     const std::vector<float> &normals,
     const std::vector<float> &texCoords,

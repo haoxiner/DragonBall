@@ -2,7 +2,7 @@
 
 const Component::ComponentType WorldPositionComponent::COMPONENT_TYPE = WORLD_POSITION_COMPONENT;
 
-Component::ComponentType WorldPositionComponent::GetComponentType()
+WorldPositionComponent::WorldPositionComponent(const int id)
+  :Component(id)
 {
-  return COMPONENT_TYPE;
 }

@@ -6,8 +6,8 @@
 class WorldPositionComponent : public Component
 {
 public:
+  WorldPositionComponent(const int id);
   const static ComponentType COMPONENT_TYPE;
-  virtual ComponentType GetComponentType();
   glm::vec3 position_;
   float rotateX_, rotateY_, rotateZ_;
 };

@@ -6,23 +6,17 @@ class Entity;
 class Component
 {
 public:
-  typedef std::uint64_t ComponentType;
-  static const ComponentType WORLD_POSITION_COMPONENT = 1;
-  static const ComponentType RENDER_COMPONENT = 2;
-  static bool Match(ComponentType key, ComponentType lock)
+  enum ComponentType
   {
-    return lock == (key & lock);
-  }
-  static ComponentType Merge(ComponentType keyA, ComponentType keyB)
-  {
-    return (keyA | keyB);
-  }
-  virtual ComponentType GetComponentType() = 0;
+    WORLD_POSITION_COMPONENT,
+    RENDER_COMPONENT,
+    TERRAIN_COMPONENT
+  };
   Entity *entity_;
   int GetID() { return id_; }
   void SetID(int id) { id_ = id; }
 protected:
-  Component() {}
+  Component(int id);
 private:
   int id_;
 };
