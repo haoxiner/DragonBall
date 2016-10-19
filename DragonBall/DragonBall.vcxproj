@@ -155,6 +155,7 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MeshLoader.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TerrainComponent.cpp" />
     <ClCompile Include="WorldPositionComponent.cpp" />
     <ClCompile Include="RawModel.cpp" />

@@ -9,6 +9,7 @@ class ComponentManager
 public:
   inline std::vector<RenderingComponent> &GetRenderingComponents() { return renderingComponents_; }
   inline std::vector<WorldPositionComponent> &GetWorldPositionComponents() { return worldPositionComponents_; }
+  inline std::vector<TerrainComponent> &GetTerrainComponents() { return terrainComponents_; }
 
   RenderingComponent *CreateRenderingComponent(const RawModel &rawModel)
   {
@@ -22,10 +23,10 @@ public:
     worldPositionComponents_.push_back(WorldPositionComponent(id));
     return &worldPositionComponents_.back();
   }
-  TerrainComponent *CreateTerrainComponent()
+  TerrainComponent *CreateTerrainComponent(const RawModel &rawModel)
   {
     int id = terrainComponents_.size();
-    terrainComponents_.push_back(TerrainComponent(id));
+    terrainComponents_.push_back(TerrainComponent(id, rawModel));
     return &terrainComponents_.back();
   }
 private:

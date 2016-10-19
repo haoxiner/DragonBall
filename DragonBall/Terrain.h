@@ -1,16 +1,14 @@
 #pragma once
-#include "RawModel.h"
+#include "Entity.h"
+#include "TerrainComponent.h"
 
-class Terrain
+class Terrain : public Entity
 {
 public:
-  Terrain();
-  ~Terrain();
-
+  virtual void Initialize();
+  virtual void Update(float deltaTime);
 private:
-  RawModel rawModel;
-  const float x_;
-  const float y_;
+  TerrainComponent *terrainComponent_;
   static const int SIZE = 800;
   static const int VERTEX_COUNT = 256;
 };
