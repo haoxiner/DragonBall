@@ -7,4 +7,6 @@ void Terrain::Initialize()
 
 void Terrain::Update(float deltaTime)
 {
+  // Entity->Update should accept something like a MSG
+  // When MSG require Terrain to shock, Set it here.
 }

@@ -43,6 +43,12 @@
     <Filter Include="源文件\Entities">
       <UniqueIdentifier>{0ceff12d-8a7f-4d77-bd4b-55a32bdcbeb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Shaders">
+      <UniqueIdentifier>{2c8e758c-7e37-4d48-8be4-530d6a085930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Shaders">
+      <UniqueIdentifier>{ba000101-1817-44d0-8e14-24b5e62b4299}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -58,12 +64,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RawModel.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="StaticShader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="WorldPositionComponent.cpp">
@@ -97,10 +97,16 @@
       <Filter>源文件\Entities</Filter>
     </ClCompile>
     <ClCompile Include="TerrainComponent.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Components</Filter>
     </ClCompile>
     <ClCompile Include="Terrain.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>源文件\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticShader.cpp">
+      <Filter>源文件\Shaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -117,12 +123,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RawModel.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="StaticShader.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="WorldPositionComponent.h">
@@ -155,9 +155,6 @@
     <ClInclude Include="TerrainRenderer.h">
       <Filter>头文件\Renderers</Filter>
     </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>头文件\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="MeshLoader.h">
       <Filter>头文件\Utils</Filter>
     </ClInclude>
@@ -168,6 +165,15 @@
       <Filter>头文件\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
+      <Filter>头文件\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>头文件\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticShader.h">
+      <Filter>头文件\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
       <Filter>头文件\Entities</Filter>
     </ClInclude>
   </ItemGroup>

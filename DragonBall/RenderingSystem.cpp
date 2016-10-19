@@ -32,46 +32,54 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
 {
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  for (auto renderingComponent : componentManager_->GetRenderingComponents())
+  auto RenderingComponentMap = componentManager_->GetRenderingComponentsMap();
+  if (!RenderingComponentMap.empty())
   {
-    auto worldPositionComp = renderingComponent.entity_->GetComponent<WorldPositionComponent>();
     staticShader_->Use();
     staticShader_->LoadViewMatrix(*camera_);
-    glm::mat4 modelMatrix;
-    modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
-    modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
-    //modelMatrix = glm::rotate(modelMatrix, worldPositionComp->position_.y, glm::vec3(0.0f, 0.0f, 1.0f));
-    staticShader_->LoadModelMatrix(modelMatrix);
-    glBindVertexArray(renderingComponent.rawModel_.vaoID_);
+    for (auto rawModelRenderingComponent : RenderingComponentMap)
+    {
+      auto rawModel = rawModelRenderingComponent.first;
+      glBindVertexArray(rawModel->vaoID_);
+      glEnableVertexAttribArray(0);
+      glEnableVertexAttribArray(1);
+      glEnableVertexAttribArray(2);
+      for (auto renderingComponent : rawModelRenderingComponent.second)
+      {
+        auto worldPositionComp = renderingComponent.entity_->GetComponent<WorldPositionComponent>();
+        glm::mat4 modelMatrix;
+        modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
+        modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
+        staticShader_->LoadModelMatrix(modelMatrix);
+        glDrawElements(GL_TRIANGLES, rawModel->indicesCount_, GL_UNSIGNED_INT, (void*)0);
+      }
+      glDisableVertexAttribArray(0);
+      glDisableVertexAttribArray(1);
+      glDisableVertexAttribArray(2);
+      glBindVertexArray(0);
+    }
+    staticShader_->Release();
+  }
+  auto terrainComponents = componentManager_->GetTerrainComponents();
+  staticShader_->Use();
+  staticShader_->LoadViewMatrix(*camera_);
+  for (auto terrainComponent : terrainComponents)
+  {
+    auto rawModel = terrainComponent.GetRawModel();
+    glBindVertexArray(rawModel->vaoID_);
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
     glEnableVertexAttribArray(2);
-    glDrawElements(GL_TRIANGLES, renderingComponent.rawModel_.indicesCount_, GL_UNSIGNED_INT, (void*)0);
+    glm::mat4 modelMatrix;
+    modelMatrix = glm::translate(modelMatrix, glm::vec3(terrainComponent.GetX(), 0.0f, terrainComponent.GetZ()));
+    staticShader_->LoadModelMatrix(modelMatrix);
+    glDrawElements(GL_TRIANGLES, rawModel->indicesCount_, GL_UNSIGNED_INT, (void*)0);
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);
     glBindVertexArray(0);
-    staticShader_->Release();
   }
-  /*
-  // traverse entities multiple times to use diffrent types of shaders to render
-  for (auto entity : entities)
-  {
-    if (Match(entity))
-    {
-      entity->Update(deltaTime);
-      // dispatch renderComponent to different renderer
-      // we should design a method to re-dispatch only when entities changed.
-       //Temporary method:
-      //In a specific renderer, renderComponents are in one array
-      //if (renderComponent->entity_ == nullptr)
-       // remove from related renderer
-      
-      
-      
-    }
-  }
-  */
+  staticShader_->Release();
 }
 
 void RenderingSystem::SetCamera(Camera *camera)

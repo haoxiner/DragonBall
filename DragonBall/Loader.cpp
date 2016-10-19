@@ -29,7 +29,7 @@ void Loader::Clear()
   }
 }
 
-RawModel Loader::LoadToVAO(
+RawModel* Loader::LoadToVAO(
   const std::vector<float> &vertices,
   const std::vector<float> &normals,
   const std::vector<float> &texCoords,
@@ -41,10 +41,10 @@ RawModel Loader::LoadToVAO(
   StoreFloatDataInAttributeList(2, 2, texCoords);
   BindIndicesBuffer(indices);
   UnbindVAO();
-  return RawModel(vaoID, indices.size());
+  return new RawModel(vaoID, indices.size());
 }
 
-RawModel Loader::LoadToVAO(const std::vector<float>& vertices, const std::vector<float>& normals, const std::vector<float>& texCoords, const std::vector<int>& indices, const std::vector<int>& boneIDs, const std::vector<float>& boneWeights)
+RawModel* Loader::LoadToVAO(const std::vector<float>& vertices, const std::vector<float>& normals, const std::vector<float>& texCoords, const std::vector<int>& indices, const std::vector<int>& boneIDs, const std::vector<float>& boneWeights)
 {
   GLuint vaoID = CreateVAO();
   StoreFloatDataInAttributeList(0, 3, vertices);
@@ -54,7 +54,7 @@ RawModel Loader::LoadToVAO(const std::vector<float>& vertices, const std::vector
   StoreFloatDataInAttributeList(4, 4, boneWeights);
   BindIndicesBuffer(indices);
   UnbindVAO();
-  return RawModel(vaoID, indices.size());
+  return new RawModel(vaoID, indices.size());
 }
 
 GLuint Loader::LoadTexture(const std::string & fileName)

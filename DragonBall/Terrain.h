@@ -9,6 +9,4 @@ public:
   virtual void Update(float deltaTime);
 private:
   TerrainComponent *terrainComponent_;
-  static const int SIZE = 800;
-  static const int VERTEX_COUNT = 256;
 };

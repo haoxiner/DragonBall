@@ -9,6 +9,7 @@
 #include "Log.h"
 #include "ComponentManager.h"
 #include "MeshLoader.h"
+#include "Terrain.h"
 #include <sstream>
 
 int WINAPI wWinMain(
@@ -42,13 +43,20 @@ int WINAPI wWinMain(
   auto worldPositionComp = componentManager.CreateWorldPositionComponent();
   player.AddComponent(worldPositionComp);
   Camera camera;
-  camera.position_ = glm::vec3(0.0f, 1.0f, 3.9f);
+  camera.position_ = glm::vec3(0.0f, 50.0f, 200.9f);
+
+  vertices.clear();normals.clear();texCoords.clear();indices.clear();
+  meshLoader.GenerateTerrain(TerrainComponent::SIZE, TerrainComponent::VERTEX_COUNT, vertices, normals, texCoords, indices);
+  auto terrainComp = componentManager.CreateTerrainComponent(loader.LoadToVAO(vertices, normals, texCoords, indices), 0, 0);
+  Terrain terrain;
+  terrain.AddComponent(terrainComp);
 
   RenderingSystem renderingSystem;
   renderingSystem.SetCamera(&camera);
 
   Engine engine;
   engine.ProcessEntity(&player);
+  engine.ProcessEntity(&terrain);
   engine.AddSystem(&renderingSystem);
   
   // then another thread starts to load resources.
