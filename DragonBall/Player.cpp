@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Input.h"
 #include "Log.h"
 
 void Player::Initialize()
@@ -9,5 +10,6 @@ void Player::Initialize()
 
 void Player::Update(float deltaTime)
 {
-  positionComponent_->position_.y += glm::radians(30.0f) * deltaTime;
+  positionComponent_->position_.y += Input::GetLeftTriggerY() * deltaTime;
+  positionComponent_->position_.x += Input::GetLeftTriggerX() * deltaTime;
 }

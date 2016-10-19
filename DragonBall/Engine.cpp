@@ -3,6 +3,10 @@
 
 void Engine::Update(float deltaTime)
 {
+  for (auto entity : entities_)
+  {
+    entity->Update(deltaTime);
+  }
   for (auto system : systems_)
   {
     system->Update(deltaTime, entities_);

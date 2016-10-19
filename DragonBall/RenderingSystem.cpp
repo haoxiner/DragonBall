@@ -46,8 +46,8 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
     staticShader_->LoadViewMatrix(*camera_);
     glm::mat4 modelMatrix;
     modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
-    //modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
-    modelMatrix = glm::rotate(modelMatrix, worldPositionComp->position_.y, glm::vec3(0.0f, 0.0f, 1.0f));
+    modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
+    //modelMatrix = glm::rotate(modelMatrix, worldPositionComp->position_.y, glm::vec3(0.0f, 0.0f, 1.0f));
     staticShader_->LoadModelMatrix(modelMatrix);
     glBindVertexArray(renderingComponent.rawModel_->vaoID_);
     glEnableVertexAttribArray(0);

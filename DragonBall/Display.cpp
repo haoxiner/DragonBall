@@ -1,4 +1,5 @@
 #include "Display.h"
+#include "Input.h"
 #include <sstream>
 
 Display::Display()
@@ -43,7 +44,38 @@ bool Display::Initialize()
     {
       switch (key)
       {
-      case GLFW_KEY_Q:
+      case GLFW_KEY_W:
+        Input::SetLeftTriggerY(Input::GetLeftTriggerY() + 1.0f);
+        break;
+      case GLFW_KEY_S:
+        Input::SetLeftTriggerY(Input::GetLeftTriggerY() - 1.0f);
+        break;
+      case GLFW_KEY_A:
+        Input::SetLeftTriggerX(Input::GetLeftTriggerX() - 1.0f);
+        break;
+      case GLFW_KEY_D:
+        Input::SetLeftTriggerX(Input::GetLeftTriggerX() + 1.0f);
+        break;
+      default:
+        break;
+      }
+    }
+    else if (action == GLFW_RELEASE)
+    {
+      switch (key)
+      {
+      case GLFW_KEY_W:
+        Input::SetLeftTriggerY(Input::GetLeftTriggerY() - 1.0f);
+        break;
+      case GLFW_KEY_S:
+        Input::SetLeftTriggerY(Input::GetLeftTriggerY() + 1.0f);
+        break;
+      case GLFW_KEY_A:
+        Input::SetLeftTriggerX(Input::GetLeftTriggerX() + 1.0f);
+        break;
+      case GLFW_KEY_D:
+        Input::SetLeftTriggerX(Input::GetLeftTriggerX() - 1.0f);
+        break;
       default:
         break;
       }
