@@ -157,6 +157,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TerrainComponent.cpp" />
+    <ClCompile Include="TerrainShader.cpp" />
     <ClCompile Include="WorldPositionComponent.cpp" />
     <ClCompile Include="RawModel.cpp" />
     <ClCompile Include="RenderingComponent.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="TerrainComponent.h" />
     <ClInclude Include="TerrainRenderer.h" />
+    <ClInclude Include="TerrainShader.h" />
     <ClInclude Include="WorldPositionComponent.h" />
     <ClInclude Include="RawModel.h" />
     <ClInclude Include="RenderingComponent.h" />

@@ -3,6 +3,7 @@
 #include "Component.h"
 #include "Camera.h"
 #include "StaticShader.h"
+#include "TerrainShader.h"
 #include "RenderingComponent.h"
 
 class RenderingSystem : public System
@@ -16,4 +17,5 @@ public:
 private:
   Camera *camera_;
   StaticShader *staticShader_;
+  TerrainShader *terrainShader_;
 };

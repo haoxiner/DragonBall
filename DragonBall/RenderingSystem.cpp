@@ -13,10 +13,14 @@ RenderingSystem::RenderingSystem()
   glCullFace(GL_BACK);
   glFrontFace(GL_CCW);
   staticShader_ = new StaticShader();
+  terrainShader_ = new TerrainShader();
   glm::mat4 projectionMatrix = glm::perspective(glm::radians(60.0f), 4.0f / 3.0f, 0.01f, 10000.0f);
   staticShader_->Use();
   staticShader_->LoadProjectionMatrix(projectionMatrix);
   staticShader_->Release();
+  terrainShader_->Use();
+  terrainShader_->LoadProjectionMatrix(projectionMatrix);
+  terrainShader_->Release();
 }
 
 RenderingSystem::~RenderingSystem()
@@ -49,6 +53,7 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
         auto worldPositionComp = renderingComponent.entity_->GetComponent<WorldPositionComponent>();
         glm::mat4 modelMatrix;
         modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
+		modelMatrix = glm::rotate(modelMatrix, worldPositionComp->rotateY_, glm::vec3(0.0f, 1.0f, 0.0f));
         modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
         staticShader_->LoadModelMatrix(modelMatrix);
         glDrawElements(GL_TRIANGLES, rawModel->indicesCount_, GL_UNSIGNED_INT, (void*)0);
@@ -61,8 +66,8 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
     staticShader_->Release();
   }
   auto terrainComponents = componentManager_->GetTerrainComponents();
-  staticShader_->Use();
-  staticShader_->LoadViewMatrix(*camera_);
+  terrainShader_->Use();
+  terrainShader_->LoadViewMatrix(*camera_);
   for (auto terrainComponent : terrainComponents)
   {
     auto rawModel = terrainComponent.GetRawModel();
@@ -72,14 +77,14 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
     glEnableVertexAttribArray(2);
     glm::mat4 modelMatrix;
     modelMatrix = glm::translate(modelMatrix, glm::vec3(terrainComponent.GetX(), 0.0f, terrainComponent.GetZ()));
-    staticShader_->LoadModelMatrix(modelMatrix);
+	terrainShader_->LoadModelMatrix(modelMatrix);
     glDrawElements(GL_TRIANGLES, rawModel->indicesCount_, GL_UNSIGNED_INT, (void*)0);
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);
     glBindVertexArray(0);
   }
-  staticShader_->Release();
+  terrainShader_->Release();
 }
 
 void RenderingSystem::SetCamera(Camera *camera)

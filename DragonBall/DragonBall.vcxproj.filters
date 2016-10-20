@@ -108,6 +108,9 @@
     <ClCompile Include="StaticShader.cpp">
       <Filter>源文件\Shaders</Filter>
     </ClCompile>
+    <ClCompile Include="TerrainShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -175,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="Terrain.h">
       <Filter>头文件\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainShader.h">
+      <Filter>头文件\Shaders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ class StaticShader : public Shader
 {
 public:
   StaticShader();
-  ~StaticShader();
+  virtual ~StaticShader();
   void LoadModelMatrix(const glm::mat4 &matrix4f);
   void LoadViewMatrix(const Camera &camera);
   void LoadProjectionMatrix(const glm::mat4 &projectionMatrix);

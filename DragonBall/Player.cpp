@@ -10,6 +10,6 @@ void Player::Initialize()
 
 void Player::Update(float deltaTime)
 {
-  positionComponent_->position_.y += Input::GetLeftTriggerY() * deltaTime;
-  positionComponent_->position_.x += Input::GetLeftTriggerX() * deltaTime;
+  positionComponent_->position_.z -= 10.0f * Input::GetLeftTriggerY() * deltaTime;
+  positionComponent_->rotateY_ += glm::radians(20.0f * Input::GetLeftTriggerX() * deltaTime);
 }
