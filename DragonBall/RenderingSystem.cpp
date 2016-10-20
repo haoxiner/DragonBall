@@ -58,11 +58,8 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
 
         glm::mat4 modelMatrix;
 		modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
-        modelMatrix = glm::scale(modelMatrix, glm::vec3(0.05f));
+        modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
 		modelMatrix = glm::rotate(modelMatrix, worldPositionComp->rotateY_, glm::vec3(0.0f, 1.0f, 0.0f));
-		/*glm::mat4 translateToWorldPosition;
-		translateToWorldPosition = glm::translate(translateToWorldPosition, worldPositionComp->position_);
-		modelMatrix = translateToWorldPosition * modelMatrix;*/
 		
         staticShader_->LoadModelMatrix(modelMatrix);
         glDrawElements(GL_TRIANGLES, rawModel->indicesCount_, GL_UNSIGNED_INT, (void*)0);

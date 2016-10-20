@@ -32,6 +32,8 @@ int WINAPI wWinMain(
   
   MeshLoader meshLoader;
   meshLoader.LoadMesh("D:/GameDev/Resources/Akai_E_Espiritu.fbx", vertices, normals, texCoords, indices);
+  vertices.clear();normals.clear();texCoords.clear();indices.clear();
+  meshLoader.LoadEMD("D:/GameDev/GOK_000_Bust.emd", vertices, normals, texCoords, indices);
 
   ComponentManager componentManager;
   System::SetComponentManager(&componentManager);
@@ -41,9 +43,13 @@ int WINAPI wWinMain(
   player.AddComponent(renderComp);
 
   auto worldPositionComp = componentManager.CreateWorldPositionComponent();
+  worldPositionComp->position_ = glm::vec3(0.0f);
+  worldPositionComp->rotateX_ = 0.0f;
+  worldPositionComp->rotateY_ = 0.0f;
+  worldPositionComp->rotateZ_ = 0.0f;
   player.AddComponent(worldPositionComp);
   Camera camera;
-  camera.position_ = glm::vec3(-10.0f, 10.0f, -10.0f);
+  camera.position_ = glm::vec3(-1.0f, 1.0f, -1.0f);
   camera.yaw_ = 225.0f;
 
   vertices.clear();normals.clear();texCoords.clear();indices.clear();
@@ -59,6 +65,8 @@ int WINAPI wWinMain(
   engine.ProcessEntity(&player);
   engine.ProcessEntity(&terrain);
   engine.AddSystem(&renderingSystem);
+
+ 
   
   // then another thread starts to load resources.
   display.Update();
@@ -69,6 +77,7 @@ int WINAPI wWinMain(
     engine.Update(deltaTime);
     display.Update();
   }
+
 
   return 0;
 }

@@ -1,4 +1,6 @@
 #include "MeshLoader.h"
+#include "LibXenoverse/LibXenoverse.h"
+#include "Log.h"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
@@ -81,4 +83,49 @@ void MeshLoader::GenerateTerrain(
       indices.push_back(topRight);
     }
   }
+}
+
+class EMDCustom : public LibXenoverse::EMD
+{
+public:
+  bool LoadEMD(
+    const std::string& filepath,
+    std::vector<float>& vertices,
+    std::vector<float>& normals,
+    std::vector<float>& texCoords,
+    std::vector<int>& indices)
+  {
+    if (!load(filepath))
+    {
+      return false;
+    }
+    auto model = models[0];
+    auto mesh = model->getMeshes()[0];
+    auto submesh = mesh->getSubmeshes()[0];
+    auto triangles = submesh->getTriangles()[0];
+    auto verts = submesh->getVertices();
+    for (auto v : verts)
+    {
+      vertices.push_back(v.x);
+      vertices.push_back(v.y);
+      vertices.push_back(v.z);
+      normals.push_back(v.nx);
+      normals.push_back(v.ny);
+      normals.push_back(v.nz);
+      texCoords.push_back(v.u);
+      texCoords.push_back(v.v);
+    }
+    for (auto i : triangles.faces)
+    {
+      indices.push_back(i);
+    }
+    return true;
+  }
+
+};
+
+bool MeshLoader::LoadEMD(const std::string& filepath, std::vector<float>& vertices, std::vector<float>& normals, std::vector<float>& texCoords, std::vector<int>& indices)
+{
+  EMDCustom emd;
+  return emd.LoadEMD(filepath, vertices, normals, texCoords, indices);
 }
