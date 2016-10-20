@@ -31,7 +31,7 @@ int WINAPI wWinMain(
   std::vector<int> indices;
   
   MeshLoader meshLoader;
-  meshLoader.LoadMesh("D:/GameDev/Resources/teapot.obj", vertices, normals, texCoords, indices);
+  meshLoader.LoadMesh("D:/GameDev/Resources/Akai_E_Espiritu.fbx", vertices, normals, texCoords, indices);
 
   ComponentManager componentManager;
   System::SetComponentManager(&componentManager);
@@ -43,7 +43,8 @@ int WINAPI wWinMain(
   auto worldPositionComp = componentManager.CreateWorldPositionComponent();
   player.AddComponent(worldPositionComp);
   Camera camera;
-  camera.position_ = glm::vec3(0.0f, 10.0f, 50.9f);
+  camera.position_ = glm::vec3(-10.0f, 10.0f, -10.0f);
+  camera.yaw_ = 225.0f;
 
   vertices.clear();normals.clear();texCoords.clear();indices.clear();
   meshLoader.GenerateTerrain(TerrainComponent::SIZE, TerrainComponent::VERTEX_COUNT, vertices, normals, texCoords, indices);

@@ -32,6 +32,10 @@ void RenderingSystem::ProcessEntity(Entity *entity)
 {
 }
 
+// There should be different kinds of shaders
+// every shader behaves differently
+// e.g player may change its shader (e.g become transparent)
+//
 void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
 {
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -51,10 +55,15 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
       for (auto renderingComponent : rawModelRenderingComponent.second)
       {
         auto worldPositionComp = renderingComponent.entity_->GetComponent<WorldPositionComponent>();
+
         glm::mat4 modelMatrix;
-        modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
+		modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
+        modelMatrix = glm::scale(modelMatrix, glm::vec3(0.05f));
 		modelMatrix = glm::rotate(modelMatrix, worldPositionComp->rotateY_, glm::vec3(0.0f, 1.0f, 0.0f));
-        modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
+		/*glm::mat4 translateToWorldPosition;
+		translateToWorldPosition = glm::translate(translateToWorldPosition, worldPositionComp->position_);
+		modelMatrix = translateToWorldPosition * modelMatrix;*/
+		
         staticShader_->LoadModelMatrix(modelMatrix);
         glDrawElements(GL_TRIANGLES, rawModel->indicesCount_, GL_UNSIGNED_INT, (void*)0);
       }
