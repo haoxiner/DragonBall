@@ -31,7 +31,7 @@ int WINAPI wWinMain(
   std::vector<int> indices;
   
   MeshLoader meshLoader;
-  meshLoader.LoadMesh("D:/GameDev/Resources/Akai_E_Espiritu.fbx", vertices, normals, texCoords, indices);
+  //meshLoader.LoadMesh("D:/GameDev/Resources/Akai_E_Espiritu.fbx", vertices, normals, texCoords, indices);
   vertices.clear();normals.clear();texCoords.clear();indices.clear();
   meshLoader.LoadEMD("D:/GameDev/GOK_000_Bust.emd", vertices, normals, texCoords, indices);
 
@@ -40,6 +40,12 @@ int WINAPI wWinMain(
 
   Player player;
   auto renderComp = componentManager.CreateRenderingComponent(loader.LoadToVAO(vertices, normals, texCoords, indices));
+  //renderComp->texID_ = loader.LoadTexture("D:/GameDev/test.dds");
+  renderComp->texID_ = loader.LoadTexture("D:/G/Extract/data/data/chara/GOK/GOK_000_Bust.dyt/DATA001.dds");
+  if (renderComp->texID_ == 0)
+  {
+    return -1;
+  }
   player.AddComponent(renderComp);
 
   auto worldPositionComp = componentManager.CreateWorldPositionComponent();
@@ -49,7 +55,7 @@ int WINAPI wWinMain(
   worldPositionComp->rotateZ_ = 0.0f;
   player.AddComponent(worldPositionComp);
   Camera camera;
-  camera.position_ = glm::vec3(-1.0f, 1.0f, -1.0f);
+  camera.position_ = glm::vec3(-1.0f, 0.5f, -1.0f);
   camera.yaw_ = 225.0f;
 
   vertices.clear();normals.clear();texCoords.clear();indices.clear();
@@ -69,8 +75,6 @@ int WINAPI wWinMain(
  
   
   // then another thread starts to load resources.
-  display.Update();
-  display.Update();
   while (display.IsRunning())
   {
     float deltaTime = display.GetDelta();

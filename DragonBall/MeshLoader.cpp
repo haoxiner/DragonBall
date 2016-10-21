@@ -99,9 +99,9 @@ public:
     {
       return false;
     }
-    auto model = models[0];
+    auto model = models[2];
     auto mesh = model->getMeshes()[0];
-    auto submesh = mesh->getSubmeshes()[0];
+    auto submesh = mesh->getSubmeshes()[1];
     auto triangles = submesh->getTriangles()[0];
     auto verts = submesh->getVertices();
     for (auto v : verts)

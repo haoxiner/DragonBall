@@ -9,5 +9,6 @@ public:
   RenderingComponent(const int id, RawModel *rawModel);
   static const ComponentType COMPONENT_TYPE;
   RawModel *rawModel_;
+  int texID_;
 private:
 };

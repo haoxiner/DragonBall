@@ -35,7 +35,6 @@ void RenderingSystem::ProcessEntity(Entity *entity)
 // There should be different kinds of shaders
 // every shader behaves differently
 // e.g player may change its shader (e.g become transparent)
-//
 void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
 {
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -52,17 +51,21 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
       glEnableVertexAttribArray(0);
       glEnableVertexAttribArray(1);
       glEnableVertexAttribArray(2);
+      
       for (auto renderingComponent : rawModelRenderingComponent.second)
       {
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, renderingComponent.texID_);
         auto worldPositionComp = renderingComponent.entity_->GetComponent<WorldPositionComponent>();
 
         glm::mat4 modelMatrix;
-		modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
+        modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
         modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
-		modelMatrix = glm::rotate(modelMatrix, worldPositionComp->rotateY_, glm::vec3(0.0f, 1.0f, 0.0f));
-		
+        modelMatrix = glm::rotate(modelMatrix, worldPositionComp->rotateY_, glm::vec3(0.0f, 1.0f, 0.0f));
+
         staticShader_->LoadModelMatrix(modelMatrix);
         glDrawElements(GL_TRIANGLES, rawModel->indicesCount_, GL_UNSIGNED_INT, (void*)0);
+        glBindTexture(GL_TEXTURE_2D, 0);
       }
       glDisableVertexAttribArray(0);
       glDisableVertexAttribArray(1);
@@ -83,7 +86,7 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
     glEnableVertexAttribArray(2);
     glm::mat4 modelMatrix;
     modelMatrix = glm::translate(modelMatrix, glm::vec3(terrainComponent.GetX(), 0.0f, terrainComponent.GetZ()));
-	terrainShader_->LoadModelMatrix(modelMatrix);
+    terrainShader_->LoadModelMatrix(modelMatrix);
     glDrawElements(GL_TRIANGLES, rawModel->indicesCount_, GL_UNSIGNED_INT, (void*)0);
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
