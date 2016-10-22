@@ -99,9 +99,17 @@ public:
     {
       return false;
     }
+    FILE *fp = fopen("D:/log.log", "w");
+    
     auto model = models[2];
     auto mesh = model->getMeshes()[0];
+    
     auto submesh = mesh->getSubmeshes()[1];
+    auto definitions = submesh->getDefinitions();
+    for (auto d : definitions)
+    {
+      fprintf(fp, "%d\n", d.tex_index);
+    }
     auto triangles = submesh->getTriangles()[0];
     auto verts = submesh->getVertices();
     for (auto v : verts)
@@ -119,6 +127,9 @@ public:
     {
       indices.push_back(i);
     }
+
+    
+    fclose(fp);
     return true;
   }
 
@@ -128,4 +139,43 @@ bool MeshLoader::LoadEMD(const std::string& filepath, std::vector<float>& vertic
 {
   EMDCustom emd;
   return emd.LoadEMD(filepath, vertices, normals, texCoords, indices);
+}
+
+void MeshLoader::LoadQuad(std::vector<float>& vertices, std::vector<float>& normals, std::vector<float>& texCoords, std::vector<int>& indices)
+{
+  float v[] = {
+    -1.0f,  1.0f + 0.8f, 0.0f,
+    -1.0f, -1.0f + 0.8f, 0.0f,
+     1.0f, -1.0f + 0.8f, 0.0f,
+     1.0f,  1.0f + 0.8f, 0.0f};
+  float n[] = {
+    0.0f, 0.0f, 1.0f,
+    0.0f, 0.0f, 1.0f,
+    0.0f, 0.0f, 1.0f,
+    0.0f, 0.0f, 1.0f};
+  float t[] = {
+    0.0f, 0.0f,
+    0.0f, 1.0f,
+    1.0f, 1.0f,
+    1.0f, 0.0f};
+  int i[] = {
+    0,1,3,
+    3,1,2
+  };
+  for (auto a : v)
+  {
+    vertices.push_back(a*0.5f);
+  }
+  for (auto a : n)
+  {
+    normals.push_back(a);
+  }
+  for (auto a : t)
+  {
+    texCoords.push_back(a);
+  }
+  for (auto a : i)
+  {
+    indices.push_back(a);
+  }
 }

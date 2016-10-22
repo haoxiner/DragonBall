@@ -37,7 +37,7 @@ void RenderingSystem::ProcessEntity(Entity *entity)
 // e.g player may change its shader (e.g become transparent)
 void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
 {
-  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   auto RenderingComponentMap = componentManager_->GetRenderingComponentsMap();
   if (!RenderingComponentMap.empty())

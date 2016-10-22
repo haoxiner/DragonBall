@@ -82,6 +82,7 @@ GLuint Loader::LoadTexture(const std::string & fileName)
   unsigned int bufsize;
   /* how big is it going to be including all mipmaps? */
   bufsize = mipMapCount > 1 ? linearSize * 2 : linearSize;
+
   buffer = (unsigned char*)malloc(bufsize * sizeof(unsigned char));
   fread(buffer, 1, bufsize, fp);
   /* close the file pointer */
@@ -112,7 +113,7 @@ GLuint Loader::LoadTexture(const std::string & fileName)
   glBindTexture(GL_TEXTURE_2D, textureID);
   unsigned int blockSize = (format == GL_COMPRESSED_RGBA_S3TC_DXT1_EXT) ? 8 : 16;
   unsigned int offset = 0;
-
+ 
   /* load the mipmaps */
   for (unsigned int level = 0; level < mipMapCount && (width || height); ++level)
   {

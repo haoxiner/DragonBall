@@ -21,6 +21,7 @@ public:
     const std::vector<int> &boneIDs,
     const std::vector<float> &boneWeights);
   GLuint LoadTexture(const std::string &fileName);
+  GLuint LoadDDS(const std::string& filepath);
 private:
   GLuint CreateVAO();
   void UnbindVAO();
