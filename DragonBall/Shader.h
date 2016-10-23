@@ -9,6 +9,7 @@ public:
   virtual ~Shader();
   void Use();
   void Release();
+  void LoadTexture(const std::string& name, int id);
 protected:
   virtual void BindAttributes() = 0;
   virtual void GetAllUniformLocations() = 0;

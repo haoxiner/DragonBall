@@ -33,6 +33,12 @@ void Shader::Load(const std::string &vertexShaderSource, const std::string &frag
   GetAllUniformLocations();
 }
 
+void Shader::LoadTexture(const std::string& name, int id)
+{
+  int location = glGetUniformLocation(programID_, name.c_str());
+  glUniform1i(location, id);
+}
+
 void Shader::BindAttribute(const GLuint location, const std::string &name)
 {
   glBindAttribLocation(programID_, location, name.c_str());

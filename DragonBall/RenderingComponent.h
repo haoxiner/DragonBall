@@ -10,5 +10,6 @@ public:
   static const ComponentType COMPONENT_TYPE;
   RawModel *rawModel_;
   int texID_;
+  int alphaID_;
 private:
 };

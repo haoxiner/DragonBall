@@ -41,7 +41,8 @@ int WINAPI wWinMain(
 
   Player player;
   auto renderComp = componentManager.CreateRenderingComponent(loader.LoadToVAO(vertices, normals, texCoords, indices));
-  renderComp->texID_ = loader.LoadTexture("D:/GameDev/DATA001.dds");
+  renderComp->texID_ = loader.LoadTexture("D:/GameDev/DATA000.dds");
+  renderComp->alphaID_ = loader.LoadTexture("D:/GameDev/DATA001.dds");
   //renderComp->texID_ = loader.LoadDDS("D:/G/Extract/data/data/chara/GOK/GOK_000_Bust.dyt/DATA001.dds");
   if (renderComp->texID_ == 0)
   {
