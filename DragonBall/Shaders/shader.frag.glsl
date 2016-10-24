@@ -7,18 +7,21 @@ in vec2 v_texCoord;
 out vec4 fragColor;
 void main()
 {
-  vec2 uv = v_texCoord;
+  
   vec3 toCamera = vec3(-1,0.5,-1) - v_position;
   vec3 toLight = normalize(toCamera);
-  float b = (dot(normalize(v_normal), toLight));
-  uv.s = b;
-  uv.t = 17.5 / 127;
-  vec4 c = texture(image, uv);
-  // fragColor = vec4(pow(vec3(1.0 - texture(image, uv).w), vec3(1.0/2.2)), 1.0);
+  float NDotL = max(0.0, dot(normalize(v_normal), toLight));
+  vec2 uv0 = v_texCoord;
+  uv0.x = (1.0 + NDotL) * 0.5;
+  uv0.y = 1 * 0.125 + 0.015625;
+  vec2 uv1 = v_texCoord;
+  uv1.x = (1.0 - dot(normalize(v_normal), toLight));
+  uv1.y = 1 * 0.125 + 0.046875;
+  vec3 c = texture(image, uv0).xyz + texture(image, uv1).xyz;
   vec4 a = texture(aimage, v_texCoord);
   float r = 1.0;
-  if (a.w > 0.4) {
-    r = 0.0;
+  if (a.w > 0.5) {
+    c = a.xyz;
   }
-  fragColor = vec4(c.xyz * r, 1.0);
+  fragColor = vec4(c.xyz, 1.0);
 }
