@@ -169,6 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CharacterBodyPart.h" />
+    <ClInclude Include="CharacterMesh.h" />
+    <ClInclude Include="CharacterModel.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentManager.h" />
     <ClInclude Include="Display.h" />

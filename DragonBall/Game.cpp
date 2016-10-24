@@ -33,8 +33,9 @@ int WINAPI wWinMain(
   MeshLoader meshLoader;
   //meshLoader.LoadMesh("D:/GameDev/Resources/Akai_E_Espiritu.fbx", vertices, normals, texCoords, indices);
   vertices.clear();normals.clear();texCoords.clear();indices.clear();
-  meshLoader.LoadEMD("D:/GameDev/GOK_000_Bust.emd", vertices, normals, texCoords, indices);
-  //meshLoader.LoadQuad(vertices, normals, texCoords, indices);
+  //meshLoader.LoadEMD("D:/GameDev/GOK_000_Bust.emd", vertices, normals, texCoords, indices);
+  //meshLoader.LoadEMD("D:\\G\\Extract\\data\\data\\chara\\GOD\\GOD_000_Bust.emd", vertices, normals, texCoords, indices);
+  meshLoader.LoadQuad(vertices, normals, texCoords, indices);
 
   ComponentManager componentManager;
   System::SetComponentManager(&componentManager);

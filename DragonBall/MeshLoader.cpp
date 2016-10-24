@@ -101,14 +101,22 @@ public:
     }
     FILE *fp = fopen("D:/log.log", "w");
     
-    auto model = models[2];
-    auto mesh = model->getMeshes()[0];
+    auto model = models[0];
+    auto names = vector<string>();
     
-    auto submesh = mesh->getSubmeshes()[1];
+    model->getMaterialNames(names);
+    for (auto a : names)
+    {
+      fprintf(fp, "%s\n", a.c_str());
+    }
+    auto mesh = model->getMeshes()[0];
+
+    auto submesh = mesh->getSubmeshes()[0];
+    fprintf(fp, "name: %s\n", submesh->getMaterialName().c_str());
     auto definitions = submesh->getDefinitions();
     for (auto d : definitions)
     {
-      fprintf(fp, "%d\n", d.tex_index);
+      fprintf(fp, "def: %d\n", d.tex_index);
     }
     auto triangles = submesh->getTriangles()[0];
     auto verts = submesh->getVertices();

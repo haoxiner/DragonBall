@@ -71,7 +71,7 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
         modelMatrix = glm::rotate(modelMatrix, worldPositionComp->rotateY_, glm::vec3(0.0f, 1.0f, 0.0f));
 
         staticShader_->LoadModelMatrix(modelMatrix);
-        glDrawElements(GL_TRIANGLES, rawModel->indicesCount_, GL_UNSIGNED_INT, (void*)0);
+        glDrawElements(GL_TRIANGLES, rawModel->indicesCount_ / 2, GL_UNSIGNED_INT, (void*)(3 * 4));
         glBindTexture(GL_TEXTURE_2D, 0);
       }
       glDisableVertexAttribArray(0);

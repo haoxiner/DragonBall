@@ -52,6 +52,12 @@
     <Filter Include="源文件\Utils">
       <UniqueIdentifier>{7becd30c-e324-49a4-afe9-97040e239390}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\CharacterModel">
+      <UniqueIdentifier>{4e6d0eda-a027-412f-be44-992bf476035f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\CharacterModel">
+      <UniqueIdentifier>{ce15d057-0749-4402-b9c9-ee2b7908c215}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WorldPositionComponent.cpp">
@@ -187,6 +193,15 @@
     </ClInclude>
     <ClInclude Include="Loader.h">
       <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterModel.h">
+      <Filter>头文件\CharacterModel</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterMesh.h">
+      <Filter>头文件\CharacterModel</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterBodyPart.h">
+      <Filter>头文件\CharacterModel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
