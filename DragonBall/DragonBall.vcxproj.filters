@@ -203,5 +203,8 @@
     <ClInclude Include="CharacterBodyPart.h">
       <Filter>头文件\CharacterModel</Filter>
     </ClInclude>
+    <ClInclude Include="CharacterRenderingComponent.h">
+      <Filter>头文件\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -170,6 +170,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CharacterBodyPart.h" />
+    <ClInclude Include="CharacterRenderingComponent.h" />
     <ClInclude Include="CharacterMesh.h" />
     <ClInclude Include="CharacterModel.h" />
     <ClInclude Include="Component.h" />
