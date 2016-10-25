@@ -123,6 +123,12 @@
     <ClCompile Include="DDSLoader.cpp">
       <Filter>源文件\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterRenderingComponent.cpp">
+      <Filter>源文件\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WorldPositionComponent.h">
@@ -193,15 +199,6 @@
     </ClInclude>
     <ClInclude Include="Loader.h">
       <Filter>头文件\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterModel.h">
-      <Filter>头文件\CharacterModel</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterMesh.h">
-      <Filter>头文件\CharacterModel</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterBodyPart.h">
-      <Filter>头文件\CharacterModel</Filter>
     </ClInclude>
     <ClInclude Include="CharacterRenderingComponent.h">
       <Filter>头文件\Components</Filter>

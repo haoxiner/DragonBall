@@ -42,45 +42,7 @@ void RenderingSystem::Update(float deltaTime, std::vector<Entity*> &entities)
 {
   glClearColor(0.9f, 0.3f, 0.4f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  auto RenderingComponentMap = componentManager_->GetRenderingComponentsMap();
-  if (!RenderingComponentMap.empty())
-  {
-    staticShader_->Use();
-    staticShader_->LoadViewMatrix(*camera_);
-    for (auto rawModelRenderingComponent : RenderingComponentMap)
-    {
-      auto rawModel = rawModelRenderingComponent.first;
-      glBindVertexArray(rawModel->vaoID_);
-      glEnableVertexAttribArray(0);
-      glEnableVertexAttribArray(1);
-      glEnableVertexAttribArray(2);
-      
-      for (auto renderingComponent : rawModelRenderingComponent.second)
-      {
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, renderingComponent.texID_);
-        staticShader_->LoadTexture("image", 0);
-        glActiveTexture(GL_TEXTURE0 + 1);
-        glBindTexture(GL_TEXTURE_2D, renderingComponent.alphaID_);
-        staticShader_->LoadTexture("aimage", 1);
-        auto worldPositionComp = renderingComponent.entity_->GetComponent<WorldPositionComponent>();
-
-        glm::mat4 modelMatrix;
-        modelMatrix = glm::translate(modelMatrix, worldPositionComp->position_);
-        modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0f));
-        modelMatrix = glm::rotate(modelMatrix, worldPositionComp->rotateY_, glm::vec3(0.0f, 1.0f, 0.0f));
-
-        staticShader_->LoadModelMatrix(modelMatrix);
-        glDrawElements(GL_TRIANGLES, rawModel->indicesCount_ / 2, GL_UNSIGNED_INT, (void*)(3 * 4));
-        glBindTexture(GL_TEXTURE_2D, 0);
-      }
-      glDisableVertexAttribArray(0);
-      glDisableVertexAttribArray(1);
-      glDisableVertexAttribArray(2);
-      glBindVertexArray(0);
-    }
-    staticShader_->Release();
-  }
+  
   auto terrainComponents = componentManager_->GetTerrainComponents();
   terrainShader_->Use();
   terrainShader_->LoadViewMatrix(*camera_);

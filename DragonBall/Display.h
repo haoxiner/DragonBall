@@ -17,5 +17,7 @@ private:
   bool running_;
   unsigned long lastTick_;
   float delta_;
+  float elapsedSeconds_ = 0.0f;
+  int frameCount_ = 0;
 };
 

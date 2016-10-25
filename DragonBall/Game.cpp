@@ -35,21 +35,13 @@ int WINAPI wWinMain(
   vertices.clear();normals.clear();texCoords.clear();indices.clear();
   //meshLoader.LoadEMD("D:/GameDev/GOK_000_Bust.emd", vertices, normals, texCoords, indices);
   //meshLoader.LoadEMD("D:\\G\\Extract\\data\\data\\chara\\GOD\\GOD_000_Bust.emd", vertices, normals, texCoords, indices);
-  meshLoader.LoadQuad(vertices, normals, texCoords, indices);
+  //meshLoader.LoadQuad(vertices, normals, texCoords, indices);
 
   ComponentManager componentManager;
   System::SetComponentManager(&componentManager);
 
   Player player;
-  auto renderComp = componentManager.CreateRenderingComponent(loader.LoadToVAO(vertices, normals, texCoords, indices));
-  renderComp->texID_ = loader.LoadTexture("D:/GameDev/DATA000.dds");
-  renderComp->alphaID_ = loader.LoadTexture("D:/GameDev/DATA001.dds");
-  //renderComp->texID_ = loader.LoadDDS("D:/G/Extract/data/data/chara/GOK/GOK_000_Bust.dyt/DATA001.dds");
-  if (renderComp->texID_ == 0)
-  {
-    return -1;
-  }
-  player.AddComponent(renderComp);
+  
 
   auto worldPositionComp = componentManager.CreateWorldPositionComponent();
   worldPositionComp->position_ = glm::vec3(0.0f);

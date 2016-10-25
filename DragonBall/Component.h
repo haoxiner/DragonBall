@@ -10,7 +10,8 @@ public:
   {
     WORLD_POSITION_COMPONENT,
     RENDER_COMPONENT,
-    TERRAIN_COMPONENT
+    TERRAIN_COMPONENT,
+    CHARACTER_RENDERING_COMPONENT
   };
   Entity *entity_;
   int GetID() { return id_; }

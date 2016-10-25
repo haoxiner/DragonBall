@@ -2,6 +2,7 @@
 #include "RenderingComponent.h"
 #include "WorldPositionComponent.h"
 #include "TerrainComponent.h"
+#include "CharacterRenderingComponent.h"
 #include "RawModel.h"
 #include <vector>
 #include <map>
@@ -9,32 +10,33 @@
 class ComponentManager
 {
 public:
-  inline std::map<RawModel*, std::vector<RenderingComponent>> &GetRenderingComponentsMap() { return renderingComponentsMap_; }
-  inline std::vector<WorldPositionComponent> &GetWorldPositionComponents() { return worldPositionComponents_; }
-  inline std::vector<TerrainComponent> &GetTerrainComponents() { return terrainComponents_; }
+  ComponentManager();
+  inline std::vector<WorldPositionComponent>& GetWorldPositionComponents() { return worldPositionComponents_; }
+  inline std::vector<TerrainComponent>& GetTerrainComponents() { return terrainComponents_; }
+  inline std::vector<CharacterRenderingComponent>& GetCharacterRenderingComponents() { return characterRenderingComponents_; }
 
-  RenderingComponent* CreateRenderingComponent(RawModel* rawModel)
-  {
-    auto renderingVector = &renderingComponentsMap_[rawModel];
-    renderingVector->push_back(RenderingComponent(0, rawModel));
-    return &(renderingVector->back());
-  }
   WorldPositionComponent* CreateWorldPositionComponent()
   {
-    int id = renderingComponentsMap_.size();
-    worldPositionComponents_.push_back(WorldPositionComponent(id));
-    return &worldPositionComponents_.back();
+    int id = worldPositionComponents_.size();
+    worldPositionComponents_.emplace_back(id);
+    return &(worldPositionComponents_.back());
   }
   TerrainComponent* CreateTerrainComponent(
     RawModel* rawModel,
     const float x, const float z)
   {
     int id = terrainComponents_.size();
-    terrainComponents_.push_back(TerrainComponent(id, rawModel, x, z));
-    return &terrainComponents_.back();
+    terrainComponents_.emplace_back(id, rawModel, x, z);
+    return &(terrainComponents_.back());
+  }
+  CharacterRenderingComponent* CreateCharacterRenderingComponent()
+  {
+    int id = characterRenderingComponents_.size();
+    characterRenderingComponents_.emplace_back(id);
+    return &(characterRenderingComponents_.back());
   }
 private:
-  std::map<RawModel*, std::vector<RenderingComponent>> renderingComponentsMap_;
   std::vector<WorldPositionComponent> worldPositionComponents_;
   std::vector<TerrainComponent> terrainComponents_;
+  std::vector<CharacterRenderingComponent> characterRenderingComponents_;
 };

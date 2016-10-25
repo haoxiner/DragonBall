@@ -3,7 +3,7 @@
 #include <sstream>
 
 Display::Display()
-  :window_(nullptr), running_(false), lastTick_(0)
+  :window_(nullptr), running_(false), lastTick_(0), elapsedSeconds_(0), frameCount_(0)
 {
 }
 
@@ -87,23 +87,21 @@ bool Display::Initialize()
 
 void Display::Update()
 {
-  static float elapsedSeconds = 0.0f;
-  static int frameCount = 0;
   unsigned long tick = GetTickCount();
   if (tick < lastTick_)
   {
     tick = lastTick_;
   }
   delta_ = 0.001f * static_cast<float>(tick - lastTick_);
-  elapsedSeconds += delta_;
-  frameCount++;
-  if (elapsedSeconds >= 1.0f)
+  elapsedSeconds_ += delta_;
+  frameCount_++;
+  if (elapsedSeconds_ >= 1.0f)
   {
     std::ostringstream oss;
-    oss << frameCount / elapsedSeconds;
+    oss << frameCount_ / elapsedSeconds_;
     glfwSetWindowTitle(window_, oss.str().c_str());
-    frameCount = 0;
-    elapsedSeconds = 0.0f;
+    frameCount_ = 0;
+    elapsedSeconds_ = 0.0f;
   }
   
   lastTick_ = tick;
