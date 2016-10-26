@@ -18,18 +18,39 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="XEMD.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="XESK.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="XEAN.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="XEMB.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="XEMM.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EMDx.h">
+    <ClInclude Include="XEMD.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="XMesh.h">
+    <ClInclude Include="Xenoverse.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="EMBx.h">
+    <ClInclude Include="XESK.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="XModel.h">
+    <ClInclude Include="XEAN.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="XEMB.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="XEMM.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

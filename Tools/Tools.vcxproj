@@ -141,17 +141,24 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../libs/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>LibXenoverse.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>LibXenoverse.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="XEAN.cpp" />
+    <ClCompile Include="XEMB.cpp" />
+    <ClCompile Include="XEMD.cpp" />
+    <ClCompile Include="XEMM.cpp" />
+    <ClCompile Include="XESK.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EMBx.h" />
-    <ClInclude Include="EMDx.h" />
-    <ClInclude Include="XMesh.h" />
-    <ClInclude Include="XModel.h" />
+    <ClInclude Include="XEAN.h" />
+    <ClInclude Include="XEMB.h" />
+    <ClInclude Include="XEMD.h" />
+    <ClInclude Include="XEMM.h" />
+    <ClInclude Include="Xenoverse.h" />
+    <ClInclude Include="XESK.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

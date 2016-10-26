@@ -4,6 +4,7 @@
 #include "OpenGLHeader.h"
 #include "ComponentManager.h"
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/matrix_decompose.hpp>
 
 RenderingSystem::RenderingSystem()
 {
@@ -14,7 +15,6 @@ RenderingSystem::RenderingSystem()
   glFrontFace(GL_CCW);
   //glEnable(GL_BLEND);
   //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
   staticShader_ = new StaticShader();
   terrainShader_ = new TerrainShader();
   glm::mat4 projectionMatrix = glm::perspective(glm::radians(60.0f), 4.0f / 3.0f, 0.01f, 10000.0f);

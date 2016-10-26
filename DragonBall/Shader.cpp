@@ -60,6 +60,9 @@ GLuint Shader::LoadShader(const std::string &shaderSource, const GLenum type)
   memset(buffer, 0, sizeof(buffer));
   glGetShaderInfoLog(shaderID, sizeof(buffer), nullptr, buffer);
   file << buffer << std::endl;
+  int nrAttributes;
+  glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
+  file << nrAttributes << std::endl;
   file.close();
   return shaderID;
 }
