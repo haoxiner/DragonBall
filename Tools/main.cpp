@@ -3,6 +3,7 @@
 #include "XEAN.h"
 #include "XEMB.h"
 #include "XEMM.h"
+#include "SceneNode.h"
 #include <vector>
 #include <string>
 #include <iostream>
@@ -92,7 +93,7 @@ void loadModels()
         model->SetSkeleton(skeleton);
       }
       model->SetMaterialPack(material);
-      //sceneNode = model->CreateSceneNode();
+      SceneNode* sceneNode = model->CreateSceneNode();
     }
     else
     {
