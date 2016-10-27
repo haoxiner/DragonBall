@@ -9,25 +9,41 @@
 #include <iostream>
 #include <queue>
 
-void loadModels()
+void loadModels(const std::string& folder)
 {
-  std::string folder = "";
   std::string character_name = "GOK";
   std::string character_index = "000";
   std::string character_prefix = folder + character_name + "/" + character_name + "_" + character_index;
   std::string skeleton_filename = character_prefix + ".esk";
   std::string animation_filename = "GOK/GOK.ean";
 
-  XESK *skeleton = nullptr;
-  skeleton = new XESK();
-  if (skeleton->load(skeleton_filename))
+  XESK *eskSkeleton = nullptr;
+  eskSkeleton = new XESK();
+  if (eskSkeleton->load(skeleton_filename))
   {
-    skeleton->CreateXSkeleton();
+    FILE *fp = fopen("D:/log.log", "w");
+    
+    auto skeleton = eskSkeleton->CreateXSkeleton();
+   
+    auto bones = skeleton->GetBones();
+    for (auto bone : bones)
+    {
+      for (int i = 0; i < 4; i++)
+      {
+        for (int j = 0; j < 4; j++)
+        {
+          fprintf(fp, "%d, ", bone->GetTransformation()[i][j]);
+        }
+      }
+      fprintf(fp, "\n");
+    }
+    fclose(fp);
+    return;
   }
   else
   {
-    delete skeleton;
-    skeleton = nullptr;
+    delete eskSkeleton;
+    eskSkeleton = nullptr;
   }
   XEAN *animation = nullptr;
   if (animation->load(animation_filename))
@@ -88,9 +104,9 @@ void loadModels()
     XEMD* model = new XEMD();
     if (model->load(modelNames[i] + ".emd"))
     {
-      if (skeleton)
+      if (eskSkeleton)
       {
-        model->SetSkeleton(skeleton);
+        model->SetSkeleton(eskSkeleton);
       }
       model->SetMaterialPack(material);
       SceneNode* sceneNode = model->CreateSceneNode();
@@ -119,9 +135,9 @@ void loadModels()
   }
 }
 
+
 int main()
 {
-  XEMD e;
-  
+  loadModels("D:/G/Extract/data/data/chara/");
   return 0;
 }

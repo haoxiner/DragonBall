@@ -16,6 +16,9 @@
     <Filter Include="头文件\Scene">
       <UniqueIdentifier>{57f7dbcb-9a45-42ee-af8c-5f50f043583f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Model">
+      <UniqueIdentifier>{f1baea83-0cd6-46f0-bc6a-314332bea5d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -37,6 +40,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="SceneNode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Bone.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -61,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="SceneNode.h">
       <Filter>头文件\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Bone.h">
+      <Filter>头文件\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>头文件\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

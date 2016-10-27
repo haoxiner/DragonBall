@@ -145,8 +145,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bone.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneNode.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="XEAN.cpp" />
     <ClCompile Include="XEMB.cpp" />
     <ClCompile Include="XEMD.cpp" />
@@ -154,7 +156,9 @@
     <ClCompile Include="XESK.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bone.h" />
     <ClInclude Include="SceneNode.h" />
+    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="XEAN.h" />
     <ClInclude Include="XEMB.h" />
     <ClInclude Include="XEMD.h" />
