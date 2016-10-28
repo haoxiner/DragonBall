@@ -32,7 +32,7 @@ void loadModels(const std::string& folder)
       {
         for (int j = 0; j < 4; j++)
         {
-          fprintf(fp, "%d, ", bone->GetTransformation()[i][j]);
+          fprintf(fp, "%f, ", bone->GetTransformation()[i][j]);
         }
       }
       fprintf(fp, "\n");
