@@ -10,7 +10,7 @@ void XEMD::SetSkeleton(XESK* skeleton)
   skeleton_ = skeleton;
 }
 
-void XEMD::SetMaterialPack(XEMM * material)
+void XEMD::SetMaterialPack(XEMM* material)
 {
 }
 

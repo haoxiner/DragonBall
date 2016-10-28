@@ -21,31 +21,17 @@ void loadModels(const std::string& folder)
   eskSkeleton = new XESK();
   if (eskSkeleton->load(skeleton_filename))
   {
-    FILE *fp = fopen("D:/log.log", "w");
+    //FILE *fp = fopen("D:/log.log", "w");
     
     auto skeleton = eskSkeleton->CreateXSkeleton();
-   
-    auto bones = skeleton->GetBones();
-    for (auto bone : bones)
-    {
-      for (int i = 0; i < 4; i++)
-      {
-        for (int j = 0; j < 4; j++)
-        {
-          fprintf(fp, "%f, ", bone->GetTransformation()[i][j]);
-        }
-      }
-      fprintf(fp, "\n");
-    }
-    fclose(fp);
-    return;
   }
   else
   {
     delete eskSkeleton;
     eskSkeleton = nullptr;
   }
-  XEAN *animation = nullptr;
+  
+  XEAN *animation = new XEAN();
   if (animation->load(animation_filename))
   {
     animation->CreateXAnimation();
@@ -55,6 +41,7 @@ void loadModels(const std::string& folder)
     delete animation;
     animation = nullptr;
   }
+  
   std::vector<std::string> modelNames;
   modelNames.push_back(character_prefix + "_Bust");
   modelNames.push_back(character_prefix + "_Boots");
@@ -63,7 +50,7 @@ void loadModels(const std::string& folder)
   modelNames.push_back(character_prefix + "_Face_forehead");
   modelNames.push_back(character_prefix + "_Pants");
   modelNames.push_back(character_prefix + "_Rist");
-
+ 
   // per EMD per SceneNode
   for (size_t i = 0; i < modelNames.size(); i++)
   {
@@ -106,10 +93,10 @@ void loadModels(const std::string& folder)
     {
       if (eskSkeleton)
       {
-        model->SetSkeleton(eskSkeleton);
+        //model->SetSkeleton(eskSkeleton);
       }
-      model->SetMaterialPack(material);
-      SceneNode* sceneNode = model->CreateSceneNode();
+      //model->SetMaterialPack(material);
+      //SceneNode* sceneNode = model->CreateSceneNode();
     }
     else
     {
