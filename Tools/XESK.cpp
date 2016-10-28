@@ -36,6 +36,7 @@ void XESK::BuildBone(unsigned short boneID, DragonBall::Skeleton* skeleton, Drag
     eskBone->transform_matrix[4], eskBone->transform_matrix[5], eskBone->transform_matrix[6], eskBone->transform_matrix[7],
     eskBone->transform_matrix[8], eskBone->transform_matrix[9], eskBone->transform_matrix[10],eskBone->transform_matrix[11],
     eskBone->transform_matrix[12],eskBone->transform_matrix[13],eskBone->transform_matrix[14],eskBone->transform_matrix[15]);
+  // this line remains to be tested. if wrong, remove glm::invers(parentMatrix)
   transformMatrix = transformMatrix * glm::inverse(parentMatrix);
   bone->SetTransformation(transformMatrix);
   for (size_t i = 0; i < bones.size(); i++)

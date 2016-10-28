@@ -1,7 +1,7 @@
 #include "Bone.h"
 
-DragonBall::Bone::Bone(const std::string& name)
-  :name_(name)
+DragonBall::Bone::Bone(const std::string& name, const int id)
+  :name_(name), id_(id)
 {
 }
 
